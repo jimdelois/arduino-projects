@@ -1,11 +1,13 @@
 #include "SR04.h"
 #include "pitches.h"
 
-const int PIN_TRIGGER = 12;
-const int PIN_ECHO = 11;
-const int PIN_BUZZER = 4;
-const int PIN_LED = 3;
+const int PIN_LED     = 7;
+const int PIN_TRIGGER = 5;
+const int PIN_ECHO    = 4;
+const int PIN_BUZZER  = 2;
+
 const int DISTANCE_MAX = 100;
+
 const int DURATION_BEEP = 125;
 
 SR04 sr04 = SR04(PIN_ECHO, PIN_TRIGGER);
