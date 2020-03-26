@@ -2,12 +2,9 @@
 #include "MAX30105.h"
 #include "heartRate.h"
 
-//const unsigned int PIN_LED = A3;
 const byte PIN_LED = A3;
-
-const unsigned int DURATION_LED_PULSE = 100; // milliseconds
-
-const unsigned long SENSITIVITY_IR = 5000;
+const unsigned int DURATION_LED_PULSE = 250; // milliseconds
+const unsigned long SENSITIVITY_IR = 7000;
 
 unsigned long ledStart = 0;
 
@@ -28,16 +25,17 @@ void setup() {
     while(1);
   }
   Serial.println("MAX30102 found; Configuring...");
-//  sensor.setup();
-  byte powerLevel    = 0x0F;  // Presence detection - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L495
-  byte ledMode       = 2;     // Red & IR           - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L458
-  byte sampleAverage = 1;     // Don't average      - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L442
-  int  sampleRate    = 50;    //                    - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L470
-  int  pulseWidth    = 215;   //                    - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L482
-  int  adcRange      = 4096;  //                    - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L467
-  sensor.setup(powerLevel, sampleAverage, ledMode, sampleRate, pulseWidth, adcRange);
 
-//  particleSensor.setPulseAmplitudeRed(0x0A);
+  byte powerLevel    = 0xFF;  // Presence detection - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L495
+  byte ledMode       = 2;     // Red & IR           - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L458
+  byte sampleAverage = 4;     // Don't average      - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L442
+  int  sampleRate    = 50;    //                    - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L470
+  int  pulseWidth    = 216;   //                    - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L482
+  int  adcRange      = 2048;  //                    - https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/src/MAX30105.cpp#L467
+//  sensor.setup(powerLevel, sampleAverage, ledMode, sampleRate, pulseWidth, adcRange);
+  sensor.setup();
+
+//  sensor.setPulseAmplitudeRed(0x0A);
   Serial.println("MAX30102 Configuration complete.");
 }
 
